@@ -1,0 +1,137 @@
+﻿@model User.Models.AddContact
+
+@{
+    ViewBag.Title = "AddContact";
+}
+@using (Ajax.BeginForm("AddContact", "User", new AjaxOptions { HttpMethod = "POST", OnFailure = "onAjaxFormError" }))
+{
+    @Html.AntiForgeryToken() 
+    <div class="form-horizontal">
+        <h4>AddContact</h4>
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-2 "><span class="control-label">Fist Name</span><span style="color:red">*</span></div>
+
+            <div class="col-md-10">
+                @Html.HiddenFor(a => a.UserID, new { @id = "UserID" })
+                @Html.TextBoxFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                <p id="FirstNamevalidation" style="color:red;display:none">Please Enter First Name</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2"><span class="control-label">Last Name</span><span style="color:red">*</span></div>
+
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                <p id="LastNamevalidation" style="color:red;display:none">Please Enter Last Name</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2"><span class="control-label">Email </span><span style="color:red">*</span></div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                <p id="Emailvalidation" style="color:red;display:none">Please Enter Email ID</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2"><span class="control-label">Mobile No</span><span style="color:red">*</span></div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Mobile, new { @type = "number", htmlAttributes = new { @class = "form-control"  } })
+                <p id="Mobilevalidation" style="color:red;display:none">Please Enter Mobile Number</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2 "><span class="control-label"></span>Active</div>
+            <div class="col-md-10">
+                <div class="" style="margin-left: 0!important">
+                    @Html.CheckBoxFor(a => a.isactive, new { @class = "", name = "isactive", title = "IsActive", @id = "isactive" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-warning" id="btncancel" type="button">Cancel </button>
+                @{
+                    if (Model.UserID > 0)
+                    {
+                        <button class="btn btn-primary" id="btnsave" type="button">Update </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary" id="btnsave" type="button">Save </button>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts { 
+    @Scripts.Render("~/bundles/jquery")
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+
+    $(document).ready(function () { 
+        $('#btncancel').on('click', function () {
+            location.href = "/usercontact/index";
+        });
+        $('#btnsave').on('click', function () {
+            $("#FirstNamevalidation").hide();
+            $("#LastNamevalidation").hide();
+            $("#Emailvalidation").hide();
+            $("#Mobilevalidation").hide();
+            var error = 0;
+            if ($("#FirstName").val() == "") {
+                $("#FirstNamevalidation").show();
+                error = 1;
+            }
+            if ($("#LastName").val() == "") {
+                $("#LastNamevalidation").show();
+                error = 1;
+            }
+            if ($("#Email").val() == "") {
+                $("#Emailvalidation").show();
+                error = 1;
+            }
+            if ($("#Mobile").val() == "") {
+                $("#Mobilevalidation").show();
+                error = 1;
+            }            
+            if (error == 0)
+            {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/UserContact/AddContact',
+                data:
+                {
+                    UserID: $("#UserID").val(),
+                    FirstName: $("#FirstName").val(),
+                    LastName: $("#LastName").val(),
+                    Email: $("#Email").val(),
+                    Mobile: $("#Mobile").val(),
+                    IsActive: $('input[name=isactive]').prop('checked')
+                },
+                success: function (da) {
+                    debugger;
+                    if (da == "Success") {
+                        location.href = "/usercontact/index";
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    debugger;
+                }
+            });
+            }
+        });
+    });
+</script>
+
