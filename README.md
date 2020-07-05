@@ -2,17 +2,17 @@
 
 This Repository used for creating WebAPI with Dependancy Injection with MVC.
 In this project contains two solution in root folders .
-In MVC folder which contain code for fontend , UI (datatable, Add & Update contact) andWebAPI calls.
-In WebAPI folder contain Rest API for list , add& updation of contact.
+In MVC folder which contain code for fontend, UI (datatable, Add & Update contact) andWebAPI calls.
+In WebAPI folder contain Rest API for list, add & updation of contact.
 
-# Artitecture :
+# About Project :
 
 Front END (MVC)
 In this project frontend made up with MVC 5 with razor, Html, css, Jquery. 
 I consume WEBAPI in this layer.
 All data access from webAPI so I consume WEBAPI.
 All the GET Post actions are using ajax call which return json result.
-For Contact list Datatale pagination JQuery used for searhing, filtering & Sorting.
+For Contact list Datatable pagination JQuery used for searhing, filtering & Sorting.
 
 # WEB API
 In this application I used Rest API to access data from database.
@@ -24,10 +24,10 @@ Then we need one IDependencyResolver to resolve this service dependancy so I use
 In this way i inject dependancy into controller.
 So the contactservice class access database using dbcontext and send data back to controller.
 
-Database
+# Database
 In this application Sql server database used, all the data access through stored procedure.
 
-How to run application:
+# How to run application:
 
 I deployed the application on testserver
 For frontend you can acces using link 
@@ -47,7 +47,7 @@ http://sunilsherkar-001-site1.ftempurl.com/Help/Api/POST-api-Contact
 to check POST API you can use Postman or Fiddler
 
 
-Code Structure
+# Code Structure
 
 Application contains two folder
 MVC
