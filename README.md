@@ -1,4 +1,5 @@
-# ContactManagemetWebAPI
+# Exercise requested by Evolent Health COntact management
+
 This Repository used for creating WebAPI with Dependancy Injection with MVC.
 In this project contains two solution in root folders .
 In MVC folder which contain code for fontend , UI (datatable, Add & Update contact) andWebAPI calls.
