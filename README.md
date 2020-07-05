@@ -1,4 +1,4 @@
-# Exercise requested by Evolent Health COntact management
+# Exercise requested by Evolent Health contact management
 
 This Repository used for creating WebAPI with Dependancy Injection with MVC.
 In this project contains two solution in root folders .
