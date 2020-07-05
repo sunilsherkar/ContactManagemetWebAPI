@@ -5,7 +5,7 @@ In this project contains two solution in root folders .
 In MVC folder which contain code for fontend , UI (datatable, Add & Update contact) andWebAPI calls.
 In WebAPI folder contain Rest API for list , add& updation of contact.
 
-Artitecture :
+# Artitecture :
 
 Front END (MVC)
 In this project frontend made up with MVC 5 with razor, Html, css, Jquery. 
@@ -14,7 +14,7 @@ All data access from webAPI so I consume WEBAPI.
 All the GET Post actions are using ajax call which return json result.
 For Contact list Datatale pagination JQuery used for searhing, filtering & Sorting.
 
-WEBAPI
+# WEB API
 In this application I used Rest API to access data from database.
 For database connection create one dbcontext object which uses connectin string from web.config.
 In WebApi I used dependancy Injection using Ninject dependancy Resolver. 
