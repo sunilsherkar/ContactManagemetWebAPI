@@ -59,6 +59,8 @@ In the ContactInfo.Models contain IContactRepository interface which can be impl
 Nijectresolver resolve dependancy which placed in ContactInfo.App_Start folder with file name NinjectWebCommon , which generate automatically when we add NInject from Nuget Packet manager.
 lastly we used Icontactrepository in our contactcontroller and perform operations.
 
+https://github.com/sunilsherkar/ContactManagemetWebAPI/blob/master/README.md#contactmanagemetwebapi
+
 
 
 
